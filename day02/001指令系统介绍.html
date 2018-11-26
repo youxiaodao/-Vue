@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            
+        }
+        .box2{
+            background-color: black;
+        }
+        ul{
+            list-style: none;
+        }
+        .luobo ul li{
+            float: left;
+            margin-left: 5px;
+            width: 30px;
+            height: 30px;
+            background: purple;
+            text-align: center;
+            line-height: 30px;
+            color: aliceblue;
+
+        }
+        .luobo{
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+VUE主要做单页面应用
+    <div id="app">{{msg}}
+
+        <div id=>{{1>2?"真的":"假的"}}</div>
+        
+        <div v-if = "show">哈哈哈</div>
+
+        <button v-on:click = "clickhandle">切换</button>
+
+        <div v-if="Math.random() > 0.5">
+            Now you see me
+        </div>
+        <div v-else>
+            Now you don't
+        </div>
+
+        <h3 v-show="isShow" v-bind:title="title">我是一个三级标题</h3>
+        <img v-bind:src="imgSrc" :alt="time">
+
+    <!-- v-bind  简便写法  : -->
+    <!-- v-on:click  简便写法   @click -->
+
+        <div class="box" v-bind:class="{box2:isBlack}">
+            
+        </div>
+        <button @click="changecolor">切换颜色</button>
+    <!-- 点击事件还能这样写 -->
+        <button v-on:click = 'count+=1'>加{{count}}</button>
+    <!-- 声明式的指令---vue
+        命令式的指令---之前
+    -->
+        <div class="luobo">
+            <img :src="currentSrc" alt="" @mouseenter="closetime" @mouseleave="starttime">
+            <ul>
+                <li v-for = "item in imgArr" @click="currenthandle(item)">{{item.id}}</li>
+                <p>-------</p>
+                <li v-for = "(item,index) in imgArr">{{index+1}}</li>
+            </ul>
+        </div>
+        <button @click="preImg">上一张</button>
+        <button @click="nextImg">下一张</button>
+
+        <div v-html="str"></div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        // vue的实例化对象
+        // MVVM
+        // MTV
+        // 指令系统 v-*
+        // 核心思想概念：数据驱动视图
+        // 双向的数据绑定
+        // 随时要看官网
+        
+        // 做轮播图
+        // 找到图片，放在数组中，
+        // 下一张和上一张的功能
+        // 定时器created（）{}
+        // 鼠标移入后，暂停，移出后，开始
+
+        // 字符串标签渲染到标签中v-html="str"
+        var app = new Vue({
+            // 在vue中自动给每个属性加了符号，取值时通过app.$el
+            // 而data中的msg直接可取app.msg
+            el:"#app",
+            data:{
+                msg:"今天学习vue",
+                show:true,
+                isShow:true,
+                title:"哈哈",
+                imgSrc:"1.jpg-",
+                time:`页面加载于${new Date().toLocaleString()}`,
+                isBlack:false,
+                count:0,
+
+                imgArr:[
+                    {id:1,src:"1.jpg"},
+                    {id:2,src:"2.jpg"},
+                    {id:3,src:"3.jpg"},
+                    {id:4,src:"4.jpg"},
+                ],
+                currentSrc:"1.jpg",
+                currentImgIndex:0,
+                timer:null,
+                str:"<p>嘿嘿嘿</p>"
+
+
+            },
+            // 创建前就开始，钩子函数
+            created(){
+                // 设置定时器，轮播图片，调用下一张函数
+                this.timer=setInterval(this.nextImg,1000)
+            },
+            methods:{
+                clickhandle(){
+                    // alert(this)
+                    // 取反操作，切换显示和不显示
+                    this.show =!this.show
+                },
+                changecolor(){
+                    this.isBlack =! this.isBlack
+                },
+                currenthandle(item){
+                    this.currentSrc = item.src
+
+                },
+                nextImg(){
+                    if(this.currentImgIndex==this.imgArr.length-1){
+                        this.currentImgIndex=-1;
+                    }
+                    this.currentImgIndex++;
+                    this.currentSrc = this.imgArr[this.currentImgIndex].src;
+                },
+                preImg(){
+                    if(this.currentImgIndex==0){
+                        this.currentImgIndex=this.imgArr.length;
+                    }
+
+                    this.currentImgIndex--;
+                    this.currentSrc = this.imgArr[this.currentImgIndex].src;
+                },
+                closetime(){
+                    clearInterval(this.timer)
+                },
+                starttime(){
+                    this.timer=setInterval(this.nextImg,1000)
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
+

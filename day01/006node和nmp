@@ -1,0 +1,33 @@
+node.js的安装
+
+安装包
+    安装之前必须先初始化
+    npm init
+    npm install jquery@2.0.1 --save   可以指定版本
+    
+    使用npm install会读取package.json文件来安装模块。
+        "dependencies": {
+        "jquery": "^3.3.1"
+        可以在这里输入包名称和版本，然后在命令行输入命令下载
+        }
+
+github 服务器
+不允许100M以上的代码,所以不会有模块包在文件中，需要自己下载
+
+下载好别人的项目后
+    # 克隆到本地
+    git clone https://github.com/bailicangdu/vue2-happyfri.git
+
+    # 进入文件夹
+    cd vue2-happyfri
+
+    # 安装依赖
+    npm install 或 yarn(推荐)
+
+    # 开启本地服务器localhost:8088
+    npm run dev
+
+    # 发布环境
+    npm run build
+
+

@@ -1,0 +1,49 @@
+1，let 和 const
+2, 模板字符串
+3，箭头函数
+    this指向对象定义时，使用的对象
+4，对象的单体模式
+    解决箭头函数的指向
+5，es6的面相对象
+    不加逗号
+6，模块化esMoudle
+    一个js文件就是一个模块
+前端工具
+webpack：打包机，能将html，css，js，png，font....进行打包，压缩，交给服务器
+    loader 加载器
+
+    插件-一个功能，一个js文件
+    组件-bootstrap组件，包含js，html，css
+功能
+    压缩
+    混淆
+
+node.js 服务器语言
+
+npm init --yes  初始化项目，自动生成package.json文件
+
+npm install jquery --save
+npm install jquery@1.0.01  --save
+
+uninstall
+
+npm 出错，后使用 npm rebuild
+npm run dev
+npm run build
+
+淘宝镜像下载包
+1.下载cnpm
+
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+2.使用cpm
+
+cnpm install jquery --save
+
+
+今日作业
+    上一页
+    列表变色
+    把今天的代码敲一遍，做好笔记，知道每个指令是干什么的，要熟练computed计算属性的用法
+    v-model原理的实现
+    预习，表单控件

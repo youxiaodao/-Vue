@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        // 字面量方式创建对象
+        var peason1 ={
+            name :'日天',
+            age : '30',
+            fav : function(){
+                console.log('喜欢av')
+                // this表示peason，使用时定义的对象
+                console.log(this.name)
+                console.log(this)
+                // 打印变量，定义时没有接收，也会打印
+                console.log(arguments)
+            }
+        }
+        peason1.fav(1,2)
+        // 使用箭头函数,
+        // 1,箭头函数的坑
+        var peason2 ={
+            name : '日天',
+            age : '30',
+            fav : ()=>{
+                console.log('喜欢av')
+                // 箭头函数中，this表示定义时，使用的对象
+                console.log(this.name)
+            }
+        }
+        peason2.fav()
+        // 2,第二个坑，
+        var peason3 ={
+            name : '日天',
+            age : '30',
+            fav : ()=>{
+                console.log('喜欢av')
+                // this表示定义时，使用的对象
+                console.log(this)
+                // 使用箭头函数打印arguments会报错
+                // console.log(arguments)
+                // 
+                // console.log(rest)
+            }
+        }
+        peason3.fav(1,2)
+        // 
+        var obj = {
+                birth: 1990,
+                getAge: function () {
+                var b = this.birth; // 1990
+                console.log(b)
+                var fn = function () {
+                    return new Date().getFullYear() - this.birth; // this指向window或undefined
+                };
+                return fn();
+            }
+        };
+        obj.getAge()
+
+        console.log(obj.fn)
+        // 看情况使用他们，
+        // function(){}=====()=>{}
+        // 1,this的指向发生了改变，指向了定义对象时的对象
+        // 2，argument不能使用
+    </script>
+</body>
+</html>

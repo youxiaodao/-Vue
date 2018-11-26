@@ -1,0 +1,25 @@
+{{}}模板语法 插值 简单的运算
+指令系统：
+    v-if----一种操作
+    v-show----频繁操作
+
+    v-bind 绑定属性 :
+    v-on 绑定事件 @
+
+    v-for 遍历，优先级大于 bind和on
+    v-html 解析html标签
+    v-mode 只适用于在表单控件，双向数据绑定的一个体现
+
+    双向数据绑定= 单向数据绑定+UI监听
+
+    MVVM
+    Model View ViewModel
+    23种设计模式
+
+    MVC MVVM MVT
+
+    computed 计算属性，监听
+
+resetCSS  清除样式，比*好
+数据驱动视图
+

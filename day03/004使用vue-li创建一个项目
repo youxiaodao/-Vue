@@ -1,0 +1,15 @@
+安装工具包
+cnpm install -g vue-cli
+创建一个项目
+vue init webpack-simple my-project
+
+cd my-project
+npm install
+npm run dev
+项目就启动了
+
+一个组件由三部分组成
+
+
+自定义组件使用时出错Unknown custom element:
+    components一定要写对啊

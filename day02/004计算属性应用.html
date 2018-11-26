@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="computed">
+        <div>
+            {{msg.split("").reverse().join("")}}
+            {{reverseStr}}
+        </div>
+
+        <button @click="clickhandler">修改</button>
+    </div>
+    <script type="text/javascript" src="vue.js"></script>
+    <script>
+        var com = new Vue({
+            el:"#computed",
+            data:{
+                msg:"",
+            },
+            computed:{
+ 
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

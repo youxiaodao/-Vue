@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    ul{
+        list-style: none;
+    }
+    li{
+        border-bottom: 1px solid gray;
+    }
+    </style>
+</head>
+<body>
+    <div id="music">
+        <!--  -->
+        <!-- 仅仅是为了演示，生产环境中不用 -->
+        <audio :src="curentSong" autoplay="" controls @ended="nextSong"></audio>
+
+        <ul>
+            <li v-for="(item,index) in audios" @click="clickHandle(index)">
+                <h3>歌名:{{item.name}}</h3>
+                <p>歌手:{{item.auth}}</p>
+            </li>
+        </ul>
+
+
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+        // 做一个音乐播放器
+        // 一首放完自动播放下一曲@ended
+
+        // 使用计算属性，监听
+        var songs = [
+            {id:1,src:'audios/1.mp3',name:"曲目1",auth:"张山"},
+            {id:2,src:'audios/2.mp3',name:"曲目2",auth:"李四"},
+            {id:3,src:'audios/3.mp3',name:"曲目3",auth:"王五"},
+        ]
+
+        var music = new Vue({
+            el:"#music",
+            data:{
+                audios:songs,
+                // curentSong:"audios/1.mp3",
+                curentSongIndex:0,
+            },
+            methods:{
+                clickHandle(index){
+                    this.curentSongIndex = index
+                    // this.curentSong=this.audios[index].src
+                },
+                nextSong(){
+                    if(this.curentSongIndex==this.audios.length-1){
+                        this.curentSongIndex=-1
+                    }
+                    this.curentSongIndex++;
+                    // this.curentSong=this.audios[this.curentSongIndex].src;
+                }
+            },
+            created(){
+                // 通常来做页面的初始化
+            },
+            computed:{
+                curentSong(){
+                    return this.audios[this.curentSongIndex].src
+                }
+
+            }
+
+        })
+        // 数据驱动视图
+        
+    </script>
+</body>
+</html>

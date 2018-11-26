@@ -1,0 +1,60 @@
+vue+vue-router+vuex
+
+=====>vue全家桶
+    MVVM
+创建前后端分离的vue项目
+    vue init webpack myMakedown
+    ? Vue build选择第一个
+        Runtime + Compiler: recommended for most users
+
+    步骤见，创建步骤截图
+
+目录中，只关心src文件夹
+
+index.js
+
+// 1、在components中写好组件后，import进来
+// 2、写好路由，即URL与之对应的组件，---
+// 3、找一个路由出口---App.vue中
+App.vue
+
+<!-- 3、引入bootstrap，直接在script中引入 -->
+<!-- 4、引入vheader --注册在components中-->
+<!-- 5、在导航条组件中把a标签改为router-link -->
+    路由切换时，保存状态
+      // 获取当前URL中的path=====>this.$route.path
+6、利用bootstrap编写主页样式
+7、编写note的样式
+8、数据的传递，父子传值，很麻烦，介绍vuex
+Vnote---VnoteShow---VnoteList---VnoteItem
+9、单向数据流
+9、使用vuex 
+    就像中央空调
+    为什么要使用vuex
+    下载vuex
+    使用vuex
+        1、在main.js中导入，use，const ，挂载在Vue下
+        2、在App.vue中实现mounted()
+            从后端拿到数据data，交给了main.js下的store.state.allList
+        3、然后，在任意的组建中都可以拿到allList，
+            并在计算属性中监听，
+        4、传递到VnoteItem
+            VnoteList----父子传值---->VnoteItem,渲染出来li标签
+        5、提取用户输入
+            点击事件，监听v-model
+                set和get方法
+        6、使用`mutations，action
+        
+        7、封装ajax，没讲...
+
+        8、添加按钮
+            elementUI
+            
+            自己封装按钮样式
+                插槽可以插事件，文字...
+        9、删除和修改的思路
+            最后一个视频
+        10、Axios
+            需要手动json序列化
+
+
